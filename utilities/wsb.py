@@ -32,8 +32,7 @@ for comment in reddit.multireddit("EngInvestor", "investing").stream.comments():
     else:
     	subreddit_scores[comment.subreddit.display_name] = 1
     i += 1
-    if i%25 == 0:
+    if i%50 == 0:
         sleep(1)
-
-#
+        pprint(subreddit_scores)
 
