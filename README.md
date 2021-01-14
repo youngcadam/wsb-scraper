@@ -3,7 +3,7 @@ Extract comments from reddit posts see the most discussed stock tickers.
 
 ### Scrape comments on a reddit post
 ```python
-python reddit.py -n example_name.txt -p kw0lin
+python reddit.py -n sample.txt -p kw0lin
 	       # -n (--name) - name of output file 
 	       # -p (--post) - reddit post id
 ```
