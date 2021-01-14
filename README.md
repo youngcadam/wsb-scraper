@@ -9,7 +9,10 @@ python reddit.py -n example_name.txt -p kw0lin
 ```
 
 #### Visualize mentioned tickers
-do this
+```python
+python counter.py -g bar
+			# -g --graph to plot (bar, cloud)
+```
 
 #### Utilities
 `cd utilities/` to use one of the scripts

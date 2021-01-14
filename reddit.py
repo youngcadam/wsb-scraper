@@ -7,33 +7,33 @@ import datetime as dt
 import argparse
 import atexit
 
-def goodbye():
-    for comment in submission.comments.list():
-        f.write(comment.body)
-
-atexit.register(goodbye)
-
 
 # Initiate the parser
 parser = argparse.ArgumentParser()
 parser.add_argument("-n", "--name", help="name of new txt file")
 parser.add_argument("-p", "--post", help="id of post")
+parser.add_argument("-l", "--limit", help="limit of wait time (default = None)")
 
-# Read arguments from the command line
+# read arguments from the command line
 args = parser.parse_args()
 
-# Check for --name or -n
+# check for args
 name, post = "", ""
 if args.post:
 	post = args.post
 else:
 	print("Post id required")
 	quit()
-
 if args.name:
     name =  f"./data/{args.name}"
 else:
 	name = f"./data/{post}_comments.txt"
+if args.limit:
+    limit =  int(args.limit)
+else:
+    print("Using default limit: None")
+    limit = None
+
 
 f = open(name, "w")
 
@@ -45,10 +45,11 @@ reddit = praw.Reddit(
 )
 
 submission = reddit.submission(id=post)
+submission.comment_sort = "top"
 print(submission.title)
 
 # print all comments in the submission
-submission.comments.replace_more(limit=None)
+submission.comments.replace_more(limit=limit)
 for comment in submission.comments.list():
     f.write(comment.body)
 
