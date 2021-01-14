@@ -7,7 +7,7 @@ import datetime as dt
 import argparse
 import atexit
 
-def goodbye(name, adjective):
+def goodbye():
     for comment in submission.comments.list():
         f.write(comment.body)
 
