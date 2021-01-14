@@ -6,6 +6,7 @@ Extract comments from reddit posts see the most discussed stock tickers.
 python reddit.py -n sample.txt -p kw0lin
 	       # -n (--name) - name of output file 
 	       # -p (--post) - reddit post id
+	       # -l (--limit) - time limit for loading more comments (recommended=100)
 ```
 
 ### Visualize mentioned tickers
