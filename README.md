@@ -20,16 +20,16 @@ Before using these, be sure to
 cd utilities/
 ```
 
-#### `ticker.py` 
+##### `ticker.py` 
 
-to download and format a list of stock tickers from [sec.gov](https://www.sec.gov/file/company-tickers)
+download and format a list of stock tickers from [sec.gov](https://www.sec.gov/file/company-tickers)
 
 Usage: 
 ```bash 
 python ticker.py # creates ../data/tickers.txt
 ```
 
-#### `wsb.py` 
+##### `wsb.py` 
 
 download stream of incoming comments from investing multireddit
 
