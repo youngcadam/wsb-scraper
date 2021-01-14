@@ -24,6 +24,15 @@ for word in f:
 	if word in symbols:
 		symbols[word] += 1
 
+# delete distracting patterns
+alph = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+flukes = ['CEO', 'EV', 'GO', 'TV', 'DD', 'VERY', 'RH', 'EOD']
+for i in alph:
+	flukes.append(i)
+
+for i in flukes:
+	if i in symbols:
+		del symbols[i]
 
 symbols = np.array([list(symbols.keys()), list(symbols.values())])
 symbols = pd.DataFrame(data=symbols).T
@@ -47,11 +56,16 @@ if args.graph == "cloud":
 	plt.figure()
 	plt.imshow(wordcloud, interpolation="bilinear")
 	plt.axis("off")
+	plt.savefig("wordcloud.png", dpi=200)
+	print("Saved figure: wordcloud.png")
 	plt.show()
 
 elif args.graph == "bar" or args.graph == "histogram":
 	plt.bar(d.keys(), d.values())
+	plt.savefig("histogram.png", dpi=200)
+	print("Saved figure: histogram.png")
 	plt.show()
+
 
 else:
 	print("Invalid argument: must include graph type!")

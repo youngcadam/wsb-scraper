@@ -32,8 +32,8 @@ else:
 if args.limit:
     limit =  int(args.limit)
 else:
-    print("Using default limit: None")
-    limit = None
+    print("Using default limit: 100")
+    limit = 100
 
 
 # open file and initialize praw
@@ -47,16 +47,17 @@ reddit = praw.Reddit(
 
 submission = reddit.submission(id=post)
 # submission.comment_sort = "new"
-print(submission.title)
+print(f"Post Title: {submission.title}")
+print(f"# of comments: {submission.num_comments}")
 
 # print all comments in the submission
-submission.comments.replace_more(limit=None, threshold=5)
+submission.comments.replace_more(limit=limit, threshold=5)
 commentlist = []
-i = 0
+#i = 0
 for comment in submission.comments.list():
     commentlist.append(comment.body)
-    print(f"Success! Recorded comment {i} to from /r/{comment.subreddit}")
-    i += 1
+    #print(f"Success! Recorded comment {i} to from /r/{comment.subreddit}")
+    #i += 1
 
 for comment in commentlist:
     f.write(comment)
