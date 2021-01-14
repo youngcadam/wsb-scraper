@@ -34,3 +34,6 @@ for comment in reddit.multireddit("EngInvestor", "investing").stream.comments():
     i += 1
     if i%25 == 0:
         sleep(1)
+
+#
+
