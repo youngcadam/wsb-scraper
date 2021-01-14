@@ -15,9 +15,20 @@ python counter.py -g bar
 ```
 
 #### Utilities
-`cd utilities/` to use one of the scripts
-`ticker.py` - to download and format a list of stock tickers from (sec.gov)[https://www.sec.gov/file/company-tickers]
+Before using these, be sure to 
+```bash
+cd utilities/
+```
+
+`ticker.py` - to download and format a list of stock tickers from [sec.gov](https://www.sec.gov/file/company-tickers)
+
 Usage: 
 ```bash 
 python ticker.py # creates ../data/tickers.txt
+```
+
+`wsb.py` - download stream of incoming comments from investing multireddit
+Usage: 
+```bash 
+python wsb.py # creates ../data/wsb.txt
 ```
