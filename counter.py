@@ -26,7 +26,7 @@ for word in f:
 
 # delete distracting patterns
 alph = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-flukes = ['CEO', 'EV', 'GO', 'TV', 'DD', 'VERY', 'RH', 'EOD']
+flukes = ['ARE', 'CEO', 'EV', 'GO', 'TV', 'DD', 'VERY', 'RH', 'EOD', 'IRS', 'RSI', 'FREE', 'PRO', 'EDIT', 'ALL', 'JACK', 'LMAO', 'COOL', 'CAN', 'RIDE', 'CASH', 'OPEN', 'LOVE', 'BIG' ,'HE', 'IT', 'FOR', 'PLAY']
 for i in alph:
 	flukes.append(i)
 
@@ -51,19 +51,19 @@ for a, b in x.values:
     	break
 
 if args.graph == "cloud":
-	wordcloud = WordCloud(relative_scaling=.5)
+	wordcloud = WordCloud(width=960, height=600, relative_scaling=.2)
 	wordcloud.generate_from_frequencies(frequencies=d)
 	plt.figure()
 	plt.imshow(wordcloud, interpolation="bilinear")
 	plt.axis("off")
-	plt.savefig("wordcloud.png", dpi=200)
-	print("Saved figure: wordcloud.png")
+	plt.savefig("data/wordcloud.png", dpi=400)
+	print("Saved figure: data/wordcloud.png")
 	plt.show()
 
 elif args.graph == "bar" or args.graph == "histogram":
 	plt.bar(d.keys(), d.values())
-	plt.savefig("histogram.png", dpi=200)
-	print("Saved figure: histogram.png")
+	plt.savefig("data/histogram.png", dpi=400)
+	print("Saved figure: data/histogram.png")
 	plt.show()
 
 

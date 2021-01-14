@@ -32,8 +32,8 @@ else:
 if args.limit:
     limit =  int(args.limit)
 else:
-    print("Using default limit: 100")
-    limit = 100
+    print("Using default limit: 50")
+    limit = 50
 
 
 # open file and initialize praw
@@ -53,11 +53,12 @@ print(f"# of comments: {submission.num_comments}")
 # print all comments in the submission
 submission.comments.replace_more(limit=limit, threshold=5)
 commentlist = []
-#i = 0
+i = 0
 for comment in submission.comments.list():
     commentlist.append(comment.body)
     #print(f"Success! Recorded comment {i} to from /r/{comment.subreddit}")
-    #i += 1
+    i += 1
+print(f"Comments Recorded: {i}")
 
 for comment in commentlist:
     f.write(comment)
