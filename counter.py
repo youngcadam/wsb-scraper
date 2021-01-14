@@ -1,13 +1,16 @@
 import pandas as pd
 import numpy as np
+import re
 
-# import list of symbols
-symbols = pd.read_csv('./data/sec.txt', sep='	', header = None)
-symbols = list(symbols[0])
-symbols = {i : 0 for i in symbols}
+# load list of stock tickers
+symbols = open('./data/tickers.txt').read().split()
+symbols = {str(i) : 0 for i in symbols}
 
+# load comments
+f = open('./data/daily_plays.txt').read()
+f = re.split('[^a-zA-Z0-9]+', f)
 
-f = open('./data/daily_plays.txt').read().split()
+# store occurrences of each ticker symbol into a DataFrame
 for word in f:
 	if word in symbols:
 		symbols[word] += 1
@@ -15,11 +18,8 @@ for word in f:
 symbols = np.array([list(symbols.keys()), list(symbols.values())])
 symbols = pd.DataFrame(data=symbols).T
 symbols.columns = ['symbol', 'count']
-# counts = np.array(symbols['count'].to_numpy())
 symbols['count'] = pd.to_numeric(symbols['count'])
-print(symbols.sort_values(by=['count'], ascending=False))
+
+# print nonzero symbols by value in descending order 
 nonzero_index = np.nonzero(symbols['count'].to_numpy())
-nonzero_index = np.tolist(nonzero_index)
-print(nonzero_index)
-# print(np.nonzero(symbols['count'].to_numpy()))
-print(symbols[nonzero_index])
+print(symbols.loc[nonzero_index].sort_values(by=['count'], ascending=False))

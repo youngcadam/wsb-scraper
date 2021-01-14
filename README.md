@@ -1,6 +1,20 @@
 # Reddit Submission Comment Scraper
-Used to extract comments from a reddit post, can be run periodically on active posts
+Extract comments from reddit posts see the most discussed stock tickers.
+
+#### Scrape comments on a reddit post
 ```python
 python reddit.py -n example_name.txt -p kw0lin
-	      # --name of output file, --post reddit id
+	      # -n --name of output file 
+	      # -p --post reddit post id
+```
+
+#### Visualize mentioned tickers
+do this
+
+#### Utilities
+`cd utilities/` to use one of the scripts
+`ticker.py` - to download and format a list of stock tickers from (sec.gov)[https://www.sec.gov/file/company-tickers]
+Usage: 
+```bash 
+python ticker.py # creates ../data/tickers.txt
 ```
