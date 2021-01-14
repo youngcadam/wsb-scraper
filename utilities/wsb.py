@@ -1,8 +1,9 @@
-# Adam Young (youngcadam@ucla.edu) © 2021 
-# exec(open("test.py").read()) 
-# EngInvestor/investing/
+# Adam Young (youngcadam@ucla.edu) © 2021                                        
+# exec(open("test.py").read())                                                   
+# EngInvestor/investing/                                                         
 import praw
 import atexit
+from time import sleep
 
 f = open("../data/wsb.txt", "a")
 
@@ -18,8 +19,11 @@ reddit = praw.Reddit(
     user_agent="d_ark"
 )
 
-i = 0
-for comment in reddit.multireddit("EngInvestor", "investing").stream.comments(skip_existing=True):
+i = 1
+for comment in reddit.multireddit("EngInvestor", "investing").stream.comments(sk\
+ip_existing=True):
     f.write("%s\n" %comment.body)
-    print(f"Success! Recorded comment {i} to data/wsb.txt")
-    i += 1	
+    print(f"[comment: {i}   /r/{comment.subreddit}]")
+    i += 1
+    if i%25 == 0:
+        sleep(3)
