@@ -16,7 +16,7 @@ symbols = open('./data/tickers.txt').read().split()
 symbols = {str(i) : 0 for i in symbols}
 
 # load comments
-f = open('./data/daily_plays.txt').read()
+f = open('./data/sample.txt').read()
 f = re.split('[^a-zA-Z0-9]+', f)
 
 # record occurrences of each ticker symbol
