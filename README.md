@@ -1,5 +1,5 @@
-# Reddit Submission Comment Scraper
-Extract comments from reddit posts see the most discussed stock tickers.
+# Reddit Comment Scraper
+Extract comments from reddit posts see the most discussed stock tickers. Included example from [/r/wallstreetbets](https://reddit.com/r/wallstreetbets)
 
 ### Scrape comments on a reddit post
 ```python
