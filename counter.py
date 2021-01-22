@@ -10,6 +10,7 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('-g', '--graph', help='select graph to plot')
 parser.add_argument('-n', '--name', help='name of file from ./data/ to parse')
+parser.add_argument('-f', '--filter', nargs='+', help='filter listed tickers from graph')
 args = parser.parse_args()
 
 # load list of stock tickers
@@ -33,12 +34,20 @@ for word in f:
 # delete distracting patterns
 alph = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 flukes = [  'AT', 'NOW' ,'ARE', 'CEO', 'EV', 'GO', 'TV', 'DD', 'VERY', 'RH', 'EOD', 'IRS', 'RSI', 'FREE', 'PRO', 'EDIT', 'ALL', 'JACK', 'LMAO', 'COOL', 'CAN', 'RIDE', 'CASH', 'OPEN', 'LOVE', 'BIG' ,'HE', 'IT', 'FOR', 'PLAY']
+
+if args.filter:
+	flukes.extend(args.filter) # appending cli flag arguments
+else:
+	name = print('Filtering none.')
+
 for i in alph:
 	flukes.append(i)
 
 for i in flukes:
 	if i in symbols:
 		del symbols[i]
+
+
 
 symbols = np.array([list(symbols.keys()), list(symbols.values())])
 symbols = pd.DataFrame(data=symbols).T
@@ -53,7 +62,7 @@ count = 0
 for a, b in x.values:
     d[a] = b
     count += 1
-    if count > 20 and args.graph == "bar":
+    if count > 15 and args.graph == "bar":
     	break
 
 
@@ -72,6 +81,9 @@ elif args.graph == 'bar' or args.graph == 'histogram':
 	plt.bar(d.keys(), d.values())
 	plt.xticks(rotation=70)
 	plt.savefig('data/histogram.png', dpi=400)
+	plt.title('/r/wallstreetbets most mentioned stocks')
+	plt.xlabel('Ticker')
+	plt.ylabel('# of times mentioned')
 	print('Saved figure: data/histogram.png')
 	plt.show()
 

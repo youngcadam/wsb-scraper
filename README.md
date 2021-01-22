@@ -13,6 +13,8 @@ python reddit.py -n sample.txt -p kw0lin
 ```python
 python counter.py -g bar
 		# -g (--graph) - type of graph to plot (bar, cloud)
+		# -n (--name) - name of file in wsb-scraper/data/
+		# -f (--filter) - filter listed tickers from plot tickers 
 ```
 
 ### Utilities
