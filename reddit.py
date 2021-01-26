@@ -40,9 +40,9 @@ else:
 f = open(name, "w")
 
 reddit = praw.Reddit(
-    client_id="NRVdeWmyQlW4Pg",
-    client_secret="Zs9Mmci2ABVzVXXy2ZvJpjgJDKWlWg",
-    user_agent="d_ark"
+    client_id="",
+    client_secret="",
+    user_agent=""
 )
 
 submission = reddit.submission(id=post)
