@@ -2,7 +2,7 @@
 Extract comments from reddit posts see the most discussed stock tickers. Included example from [/r/wallstreetbets](https://reddit.com/r/wallstreetbets)
 
 ### Disclaimer
-You will need to make an app on reddit (reddit.com -> preferences -> apps). See the [PRAW reddit API documentation](https://praw.readthedocs.io/en/latest/getting_started/authentication.html) for more information. You will need to add this to reddit.py and utilities/wsb.py in order for them to work.
+You will need to make an app on reddit (reddit.com -> preferences -> apps). See the [PRAW reddit API documentation](https://praw.readthedocs.io/en/latest/getting_started/authentication.html) for more information. You will need to add this to `reddit.py` and `utilities/wsb.py` in order for them to work.
 
 ### Scrape comments on a reddit post
 ```python
