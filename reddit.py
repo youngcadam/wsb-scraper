@@ -39,11 +39,13 @@ else:
 # open file and initialize praw
 f = open(name, "w")
 
+######################## ADD YOUR OWN INFORMATION HERE ########################
 reddit = praw.Reddit(
     client_id="",
     client_secret="",
     user_agent=""
 )
+###############################################################################
 
 submission = reddit.submission(id=post)
 # submission.comment_sort = "new"
